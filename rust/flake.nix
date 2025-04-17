@@ -40,22 +40,10 @@
     packages = forAllSystems ({pkgs}: {
       default = pkgs.callPackage ./default.nix {};
     });
-    # devShells = forAllSystems ({pkgs}: {
-    #   default = pkgs.callPackage ./shell.nix {};
-    # });
 
     # Development environment output
     devShells = forAllSystems ({pkgs}: {
-      default = pkgs.mkShell {
-        # The Nix packages provided in the environment
-        packages =
-          (with pkgs; [
-            # The package provided by our custom overlay. Includes cargo, Clippy, cargo-fmt,
-            # rustdoc, rustfmt, and other tools.
-            rustToolchain
-          ])
-          ++ pkgs.lib.optionals pkgs.stdenv.isDarwin (with pkgs; [libiconv]);
-      };
+      default = pkgs.callPackage ./shell.nix {};
     });
   };
 }
