@@ -9,12 +9,20 @@
     self,
     nixpkgs,
   }: {
-    templates.python = {
-      path = ./python;
-      description = "Simple Python Shell";
-      welcomeText = ''
-        # Hello!
-      '';
+    templates = {
+      python = {
+        path = ./python;
+        description = "Simple Python Shell";
+        welcomeText = ''
+          # Hello!
+        '';
+      };
+      rust = {
+        path = ./rust;
+        description = "Simple Rust Shell";
+        welcomeText = ''
+        '';
+      };
     };
   };
 }
