@@ -13,7 +13,7 @@
       path = ./python;
       description = "Simple Python Shell";
       welcomeText = ''
-        Hello!
+        # Hello!
       '';
     };
   };
