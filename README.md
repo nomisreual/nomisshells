@@ -8,6 +8,16 @@ nix flake init --template github:nomisreual/nomisshells#<name>
 
 Note: `<name>` refers to the name of the template.
 
+When put into a development shell with `nix develop`, `$SHELL` points to a non-interactive *bash* binary. As a workaround, set `$SHELL` to an interactive *bash* binary (on nixpkgs unstable, the default shell points to the interactive *bash* binary).
+
+```nix
+    shellHook = ''
+      # set SHELL to current system shell, which points to
+      # an interactive shell (on unstable)
+      export SHELL=/run/current-system/sw/bin/bash
+    '';
+```
+
 
 ## A note on Python
 
