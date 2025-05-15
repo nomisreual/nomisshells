@@ -14,7 +14,6 @@
         path = ./python;
         description = "Simple Python Shell";
         welcomeText = ''
-          # Hello!
         '';
       };
       rust = {

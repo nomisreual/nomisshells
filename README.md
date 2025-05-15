@@ -23,7 +23,9 @@ you can do something like:
 ```nix
 python = pkgs.python311.override {
   packageOverrides = final: prev: {
+    # Make django point to the django_5 package
     django = prev.django_5;
+    # Disable tests for building django-extensions
     django-extensions = prev.django-extensions.overridePythonAttrs (old: rec {
       doCheck = false;
     });

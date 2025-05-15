@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    rust-overlay.url = "github:oxalica/rust-overlay"; # A helper for Rust + Nix
+    rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
   outputs = {
@@ -11,26 +11,23 @@
     nixpkgs,
     rust-overlay,
   }: let
-    # Overlays enable you to customize the Nixpkgs attribute set
     overlays = [
       # Makes a `rust-bin` attribute available in Nixpkgs
       (import rust-overlay)
-      # Provides a `rustToolchain` attribute for Nixpkgs that we can use to
+      # Provides a `rustToolchain` attribute for Nixpkgs that can be used to
       # create a Rust environment
       (self: super: {
         rustToolchain = super.rust-bin.stable.latest.default;
       })
     ];
 
-    # Systems supported
     allSystems = [
-      "x86_64-linux" # 64-bit Intel/AMD Linux
-      "aarch64-linux" # 64-bit ARM Linux
-      "x86_64-darwin" # 64-bit Intel macOS
-      "aarch64-darwin" # 64-bit ARM macOS
+      "x86_64-linux"
+      "aarch64-linux"
+      "x86_64-darwin"
+      "aarch64-darwin"
     ];
 
-    # Helper to provide system-specific attributes
     forAllSystems = f:
       nixpkgs.lib.genAttrs allSystems (system:
         f {
@@ -41,7 +38,6 @@
       default = pkgs.callPackage ./default.nix {};
     });
 
-    # Development environment output
     devShells = forAllSystems ({pkgs}: {
       default = pkgs.callPackage ./shell.nix {};
     });
