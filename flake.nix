@@ -22,6 +22,12 @@
         welcomeText = ''
         '';
       };
+      js = {
+        path = ./jsts;
+        description = "Simple JavaScript (ts) Shell";
+        welcomeText = ''
+        '';
+      };
     };
   };
 }
