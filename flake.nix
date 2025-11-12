@@ -10,6 +10,12 @@
     nixpkgs,
   }: {
     templates = {
+      default = {
+        path = ./default;
+        description = "Generic Flake";
+        welcomeText = ''
+        '';
+      };
       python = {
         path = ./python;
         description = "Simple Python Flake";
