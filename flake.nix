@@ -12,20 +12,21 @@
     templates = {
       python = {
         path = ./python;
-        description = "Simple Python Shell";
+        description = "Simple Python Flake";
         welcomeText = ''
         '';
       };
       rust = {
         path = ./rust;
-        description = "Simple Rust Shell";
+        description = "Simple Rust Flake";
         welcomeText = ''
         '';
       };
-      js = {
-        path = ./jsts;
-        description = "Simple JavaScript (ts) Shell";
+      java = {
+        path = ./java;
+        description = "Simple Java Flake";
         welcomeText = ''
+          OpenJDK 21
         '';
       };
     };
